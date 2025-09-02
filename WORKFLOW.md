@@ -12,8 +12,8 @@ cp .env.template .env
 # Edit .env and add your Anthropic API key
 
 # 3. Initialize and start
-./noapp init   # Creates directories, builds container, deploys agents
-./noapp start  # Start container and Claude
+./noapp.sh init   # Creates directories, builds container, deploys agents
+./noapp.sh start  # Start container and Claude
 ```
 
 ## Scenario 2: Update Configuration
@@ -24,7 +24,7 @@ cp .env.template .env
 vim agents/new-agent.md
 
 # 2. Deploy changes to running container
-./noapp deploy
+./noapp.sh deploy
 
 # 3. Continue working in Claude
 # (Claude session continues with new agents available)
@@ -35,10 +35,10 @@ vim agents/new-agent.md
 
 ```bash
 # One command to start working
-./noapp start
+./noapp.sh start
 
 # When done
-./noapp stop
+./noapp.sh stop
 ```
 
 ## Essential Commands (only 5!)
@@ -54,12 +54,12 @@ vim agents/new-agent.md
 ## Quick Reference
 
 ```bash
-./noapp         # Shows available commands
-./noapp init    # First time only
-./noapp start   # Daily work
-./noapp deploy  # After changes
-./noapp stop    # End session
-./noapp clean   # Nuclear option
+./noapp.sh         # Shows available commands
+./noapp.sh init    # First time only
+./noapp.sh start   # Daily work
+./noapp.sh deploy  # After changes
+./noapp.sh stop    # End session
+./noapp.sh clean   # Nuclear option
 ```
 
 ## What Happens Under the Hood
