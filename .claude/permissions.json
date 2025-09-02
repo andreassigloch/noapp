@@ -1,0 +1,87 @@
+{
+  "allowedTools": [
+    "Read",
+    "Write", 
+    "Edit",
+    "MultiEdit",
+    "Glob",
+    "Grep",
+    "Git"
+  ],
+  "disallowedTools": [
+    "Bash",
+    "WebSearch",
+    "WebFetch",
+    "Task",
+    "KillBash",
+    "BashOutput"
+  ],
+  "toolConfigurations": {
+    "Read": {
+      "allowedPaths": [
+        "/workspace/**",
+        "/home/appuser/.claude/**"
+      ],
+      "description": "Read access to workspace and Claude config only"
+    },
+    "Write": {
+      "allowedPaths": [
+        "/workspace/specs/**",
+        "/workspace/agents/**",
+        "/home/appuser/.claude/output-styles/**"
+      ],
+      "description": "Write access limited to specs, agents, and output-styles"
+    },
+    "Edit": {
+      "allowedPaths": [
+        "/workspace/specs/**",
+        "/workspace/agents/**"
+      ],
+      "description": "Edit access limited to workspace files"
+    },
+    "MultiEdit": {
+      "allowedPaths": [
+        "/workspace/specs/**",
+        "/workspace/agents/**"
+      ],
+      "description": "Multi-edit access limited to workspace files"
+    },
+    "Glob": {
+      "allowedPaths": [
+        "/workspace/**"
+      ],
+      "description": "File search limited to workspace"
+    },
+    "Grep": {
+      "allowedPaths": [
+        "/workspace/**"
+      ],
+      "description": "Content search limited to workspace"
+    },
+    "Git": {
+      "allowedOperations": [
+        "status",
+        "add", 
+        "commit",
+        "log",
+        "diff"
+      ],
+      "allowedPaths": [
+        "/workspace/**"
+      ],
+      "description": "Git operations limited to workspace, no push/pull/remote operations"
+    }
+  },
+  "systemPrompts": {
+    "fileOnlyMode": "You are operating in file-only mode. You can read, write, and edit files, but cannot execute shell commands or access external resources. Focus on creating, analyzing, and modifying system specifications and documentation.",
+    "workspaceRestriction": "Your file access is restricted to the /workspace directory and Claude configuration. This is a sandboxed environment for systems engineering work."
+  },
+  "settings": {
+    "permissionMode": "acceptEdits",
+    "autoApprove": false,
+    "requireConfirmation": [
+      "Write",
+      "MultiEdit"
+    ]
+  }
+}

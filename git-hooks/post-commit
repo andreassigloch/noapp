@@ -1,0 +1,32 @@
+#!/bin/bash
+# NoApp Post-Commit Hook
+# Triggers after successful commit
+
+echo "📝 NoApp Post-Commit Hook: Processing commit..."
+
+# Get commit info
+commit_hash=$(git rev-parse HEAD)
+commit_msg=$(git log --format=%B -n 1 HEAD)
+changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD)
+
+echo "🔖 Commit: ${commit_hash:0:8}"
+echo "📁 Changed files:"
+echo "$changed_files" | sed 's/^/   - /'
+
+# Count specs files
+specs_count=$(echo "$changed_files" | grep -c "^specs/.*\.md$" || true)
+agents_count=$(echo "$changed_files" | grep -c "^agents/.*\.md$" || true)
+
+if [ "$specs_count" -gt 0 ]; then
+    echo "📊 Updated $specs_count specification file(s)"
+fi
+
+if [ "$agents_count" -gt 0 ]; then
+    echo "🤖 Updated $agents_count agent file(s)"
+fi
+
+# Log to commit history file
+echo "$(date '+%Y-%m-%d %H:%M:%S') | ${commit_hash:0:8} | $specs_count specs, $agents_count agents" >> .git/commit-history.log
+
+echo "✅ Post-commit processing complete"
+exit 0

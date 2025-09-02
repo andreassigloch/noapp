@@ -1,0 +1,29 @@
+# NoApp - Git Ignore File
+
+# Environment
+.env
+.env.local
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
+logs/
+
+# Generated specs (optional - decide if you want to track these)
+# specs/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/

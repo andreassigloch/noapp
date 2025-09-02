@@ -1,0 +1,45 @@
+#!/bin/bash
+# NoApp Pre-Commit Hook
+# Validates specs before committing
+
+echo "🔍 NoApp Pre-Commit Hook: Validating specs..."
+
+# Check if specs directory exists
+if [ ! -d "specs/" ]; then
+    echo "✅ No specs directory, allowing commit"
+    exit 0
+fi
+
+# Validate markdown files
+specs_valid=true
+
+for file in specs/*.md; do
+    if [ -f "$file" ]; then
+        echo "📋 Validating: $(basename "$file")"
+        
+        # Check for basic structure
+        if ! grep -q "^#" "$file"; then
+            echo "❌ Missing headers in $file"
+            specs_valid=false
+        fi
+        
+        # Check file size (not empty, not too large)
+        size=$(wc -c < "$file")
+        if [ "$size" -lt 10 ]; then
+            echo "❌ File too small: $file"
+            specs_valid=false
+        elif [ "$size" -gt 1000000 ]; then
+            echo "⚠️  Large file detected: $file (${size} bytes)"
+        fi
+    fi
+done
+
+if [ "$specs_valid" = false ]; then
+    echo ""
+    echo "❌ Pre-commit validation failed!"
+    echo "   Fix the issues above before committing"
+    exit 1
+fi
+
+echo "✅ All specs validated successfully"
+exit 0

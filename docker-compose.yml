@@ -1,0 +1,31 @@
+
+
+services:
+  noapp-dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: noapp-step1
+    volumes:
+      # Step 1: Minimal mounts
+      - ./specs:/workspace/specs              # Generated specs (bidirectional)
+      - ./agents:/workspace/agents            # Agent development (persistent)
+      - noapp-claude:/home/appuser/.claude    # Claude config (Docker volume)
+    environment:
+      - CLAUDE_CONFIG_PATH=/home/appuser/.claude
+      - PROJECT_ROOT=/workspace
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - TERM=xterm-256color
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    networks:
+      - noapp-network
+
+volumes:
+  noapp-claude:
+    driver: local
+
+networks:
+  noapp-network:
+    driver: bridge

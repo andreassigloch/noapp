@@ -1,0 +1,26 @@
+# NoApp Git Configuration
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Node modules (if any)
+node_modules/
+
+# Claude temporary files
+.claude/shell-snapshots/
+.claude/todos/
+.claude/statsig/
+
+# Keep important Claude config
+!.claude/agents/
+!.claude/output-styles/
+!.claude/permissions.json
+
+# Docker and development
+.env
+.env.local
+
+# Development documentation
+devdoc/
