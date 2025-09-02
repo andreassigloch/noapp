@@ -29,14 +29,14 @@
 - **Insight:** Docker is NOT just for development - it's the production sandbox
 - **Security:** LLM agents run in controlled, isolated environment
 - **Deployment:** Container-first approach enables consistent environments
-- **Volume Mounting:** Critical for bidirectional file access (host ” container)
+- **Volume Mounting:** Critical for bidirectional file access (host ï¿½ container)
 
 #### **Development Workflow**
 ```bash
-./dev.sh start    # Start production container
-./dev.sh deploy   # Deploy agents/scripts to container  
-./dev.sh claude   # Interactive session in container
-./dev.sh git-*    # Git operations with hooks
+./noapp.sh start    # Start production container
+./noapp.sh deploy   # Deploy agents/scripts to container  
+./noapp.sh start    # Interactive session in container
+# Git operations handled automatically within container
 ```
 
 ### 3. Systems Engineering vs. Software Engineering
@@ -56,7 +56,7 @@
 ### 4. Multi-Agent Architecture Patterns
 
 #### **Agent Interaction Models**
-- **Sequential:** Discovery ’ Test ’ Architect ’ Safety (works well)
+- **Sequential:** Discovery ï¿½ Test ï¿½ Architect ï¿½ Safety (works well)
 - **Collaborative:** Agents read each other's outputs and iterate
 - **Validation:** Cross-agent consistency checking prevents gaps
 - **Orchestration:** Centralized coordination for complex workflows
@@ -108,7 +108,7 @@
 #### **Multi-Document Consistency Challenge**
 - **Problem:** Requirements scattered across multiple documents (specs, tests, reviews)
 - **Solution:** Consolidation analysis and unified specification approach
-- **Pattern:** Requirements ’ Test Cases ’ Architecture must be synchronized
+- **Pattern:** Requirements ï¿½ Test Cases ï¿½ Architecture must be synchronized
 - **Validation:** Cross-document consistency checking essential
 
 #### **Requirements Traceability**
@@ -121,8 +121,7 @@
 
 #### **Hot-Reload Development**
 ```bash
-./dev.sh update   # Watch for changes and auto-deploy
-./dev.sh deploy   # Manual deployment of changes
+./noapp.sh deploy   # Manual deployment of changes
 ```
 - **Efficiency:** Rapid iteration on agent definitions
 - **Consistency:** Ensures container always has latest agent versions
@@ -130,9 +129,7 @@
 
 #### **Debug and Monitoring**
 ```bash
-./dev.sh claude-debug   # Debug info + agent status
-./dev.sh git-status     # Repository status
-./dev.sh claude-agents  # Demo then interactive
+./noapp.sh start   # Interactive session with status info
 ```
 - **Visibility:** Clear insight into system state
 - **Troubleshooting:** Easy identification of configuration issues
@@ -156,7 +153,7 @@
 
 #### **Learning Curve Management**
 - **Challenge:** Users need to understand agent invocation model
-- **Solution:** Clear examples and guidance in dev.sh
+- **Solution:** Clear examples and guidance in noapp.sh
 - **Documentation:** Comprehensive usage patterns and workflows
 - **Error Recovery:** Helpful error messages and alternatives
 
@@ -177,7 +174,7 @@
 
 ### 2. **Container-First Deployment**
 - Docker as production environment, not just development
-- Consistent deployment pipeline via dev.sh
+- Consistent deployment pipeline via noapp.sh
 - Volume mounting for host-container integration
 
 ### 3. **Multi-Document Consistency**
