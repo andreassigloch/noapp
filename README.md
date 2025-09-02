@@ -6,7 +6,7 @@ An AI-powered system for structured specification development using specialized 
 
 ### 1. First Time Setup
 ```bash
-cp .env.template .env    # Add your Anthropic API key
+cp .env.template .env    # Add your API key
 ./noapp init            # Initialize everything
 ./noapp start           # Begin working
 ```
@@ -42,6 +42,12 @@ vim agents/new-agent.md
 
 ## Requirements
 - Docker and docker-compose
-- Anthropic API key
+- API key for Claude
+
+## Getting Started
+1. Clone this repository
+2. Copy `.env.template` to `.env` and add your API key
+3. Run `./noapp init` to initialize the system
+4. Run `./noapp start` to begin working
 
 See `WORKFLOW.md` for detailed usage instructions.
